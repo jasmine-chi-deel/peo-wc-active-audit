@@ -114,7 +114,7 @@ function updateRunBtn() {
   btn.className = "btn-run " + (ready ? "ready" : "disabled");
 }
 
-function padId(id) { return String(id).trim().padStart(6, "0"); }
+function padId(id) { return String(id).trim().replace(/\.0+$/, "").padStart(6, "0"); }
 
 function extractClientId(val) {
   if (!val) return "";
@@ -277,11 +277,21 @@ function renderTable(rows) {
 
 function exportCSV() {
   const rows = allResults.map(r => ({
-    "Type": r.type, "Client ID": r.clientId, "Client Name": r.clientName,
-    "Effective Date": r.effectiveDate, "Class Code": r.classCode,
-    "State": r.state, "Payroll": r.payroll.toFixed(2)
+    "Type": r.type,
+    "Client ID": { t: "s", v: r.clientId },
+    "Client Name": r.clientName,
+    "Effective Date": r.effectiveDate,
+    "Class Code": r.classCode,
+    "State": r.state,
+    "Payroll": r.payroll.toFixed(2)
   }));
   const ws = XLSX.utils.json_to_sheet(rows);
+  // Force Client ID column (B) as text
+  const range = XLSX.utils.decode_range(ws["!ref"]);
+  for (let i = range.s.r + 1; i <= range.e.r; i++) {
+    const cell = ws[XLSX.utils.encode_cell({ r: i, c: 1 })];
+    if (cell) { cell.t = "s"; cell.z = "@"; }
+  }
   const csv = XLSX.utils.sheet_to_csv(ws);
   const blob = new Blob([csv], { type: "text/csv" });
   const url = URL.createObjectURL(blob);
