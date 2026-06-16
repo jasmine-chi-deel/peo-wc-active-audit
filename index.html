@@ -13,7 +13,7 @@
     .subtitle { font-size: 13px; color: #6b7280; margin-top: 4px; margin-bottom: 28px; }
     .card { background: #fff; border: 1px solid #e5e7eb; border-radius: 12px; padding: 24px; margin-bottom: 20px; }
     .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
-    .grid3 { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 16px; margin-bottom: 20px; }
+    .grid4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; margin-bottom: 20px; }
     .dropzone { border: 2px dashed #e5e7eb; border-radius: 12px; padding: 16px; transition: all 0.2s; }
     .dropzone.active { border-color: #34d399; background: #f0fdf4; }
     .dz-label { font-size: 13px; font-weight: 600; color: #111; display: flex; align-items: center; gap: 6px; margin-bottom: 2px; }
@@ -24,25 +24,32 @@
     .btn-choose:hover { background: #374151; }
     .btn-remove { font-size: 11px; color: #9ca3af; background: none; border: none; cursor: pointer; margin-left: 8px; }
     .btn-remove:hover { color: #ef4444; }
+    .info-box { background: #f9fafb; border: 1px solid #e5e7eb; border-radius: 10px; padding: 12px; font-size: 12px; color: #6b7280; margin-top: 16px; }
+    .info-box span { font-weight: 600; color: #374151; }
     .btn-run { width: 100%; padding: 12px; border-radius: 12px; font-size: 13px; font-weight: 600; border: none; cursor: pointer; margin-top: 20px; transition: all 0.2s; display: flex; align-items: center; justify-content: center; gap: 8px; }
     .btn-run.ready { background: #111; color: #fff; }
     .btn-run.ready:hover { background: #374151; }
     .btn-run.disabled { background: #f3f4f6; color: #9ca3af; cursor: not-allowed; }
     .error { background: #fef2f2; color: #dc2626; border-radius: 8px; padding: 12px; font-size: 13px; margin-top: 12px; }
-    .info-box { background: #eff6ff; border: 1px solid #bfdbfe; border-radius: 12px; padding: 16px; font-size: 13px; color: #1d4ed8; margin-top: 16px; }
     .summary-card { border-radius: 12px; padding: 16px; color: #fff; }
     .summary-card .val { font-size: 28px; font-weight: 700; }
     .summary-card .lbl { font-size: 12px; opacity: 0.8; margin-top: 2px; }
-    .bg-dark { background: #111; } .bg-blue { background: #2563eb; } .bg-red { background: #dc2626; }
+    .bg-dark { background: #111; } .bg-blue { background: #2563eb; } .bg-orange { background: #f97316; } .bg-red { background: #dc2626; }
+    .tabs { display: flex; border-bottom: 1px solid #e5e7eb; margin-bottom: 20px; align-items: center; }
+    .tab { padding: 10px 16px; font-size: 13px; font-weight: 500; border: none; background: none; cursor: pointer; border-bottom: 2px solid transparent; color: #9ca3af; transition: all 0.2s; }
+    .tab.active { border-bottom-color: #111; color: #111; }
+    .tab-badge { font-size: 10px; padding: 2px 6px; border-radius: 999px; margin-left: 6px; }
+    .tab-badge-gray { background: #f3f4f6; color: #6b7280; }
+    .tab-badge-red { background: #fee2e2; color: #991b1b; }
+    .btn-new { margin-left: auto; font-size: 12px; color: #9ca3af; background: none; border: none; cursor: pointer; padding: 8px; }
+    .btn-new:hover { color: #374151; }
     .toolbar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; margin-bottom: 16px; }
     .toolbar-left h2 { font-size: 14px; font-weight: 600; color: #111; }
     .toolbar-left p { font-size: 11px; color: #9ca3af; margin-top: 2px; }
     .toolbar-right { display: flex; gap: 8px; align-items: center; }
     .search-input { border: 1px solid #e5e7eb; border-radius: 8px; padding: 6px 12px; font-size: 12px; width: 200px; outline: none; }
-    .btn-export { background: #111; color: #fff; border: none; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; white-space: nowrap; }
+    .btn-export { background: #111; color: #fff; border: none; padding: 6px 14px; border-radius: 8px; font-size: 12px; font-weight: 500; cursor: pointer; }
     .btn-export:hover { background: #374151; }
-    .btn-new { background: #fff; color: #6b7280; border: 1px solid #e5e7eb; padding: 6px 14px; border-radius: 8px; font-size: 12px; cursor: pointer; }
-    .btn-new:hover { background: #f9fafb; }
     table { width: 100%; border-collapse: collapse; font-size: 13px; }
     thead th { text-align: left; padding: 8px 12px; font-size: 11px; font-weight: 600; color: #6b7280; text-transform: uppercase; letter-spacing: 0.05em; border-bottom: 1px solid #f3f4f6; white-space: nowrap; }
     tbody tr { border-bottom: 1px solid #f9fafb; }
@@ -52,22 +59,26 @@
     .truncate { max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
     .badge-blue { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; background: #eff6ff; color: #1d4ed8; }
     .badge-gray { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; background: #f3f4f6; color: #374151; }
+    .badge-red { display: inline-block; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 500; background: #fee2e2; color: #991b1b; }
     .empty { text-align: center; padding: 32px; color: #9ca3af; font-size: 13px; }
     .spinner { display: inline-block; width: 14px; height: 14px; border: 2px solid #fff; border-top-color: transparent; border-radius: 50%; animation: spin 0.7s linear infinite; }
     @keyframes spin { to { transform: rotate(360deg); } }
     .overflow-x { overflow-x: auto; }
+    .debug-box { background: #fefce8; border: 1px solid #fde68a; border-radius: 10px; padding: 14px; font-size: 11px; margin-bottom: 20px; }
+    .debug-box p { font-weight: 600; color: #92400e; margin-bottom: 8px; }
+    .debug-row { font-family: monospace; background: #fff; border-radius: 6px; padding: 4px 8px; margin-bottom: 4px; color: #78350f; }
   </style>
 </head>
 <body>
 <div class="container">
   <h1>Zurich Active QA</h1>
-  <p class="subtitle">Compare DEEL Client-Class-Payroll report against WC Active Audit to find missing states</p>
+  <p class="subtitle">Compare Zurich Client-Class-Payroll report against WC Active Audit to find discrepancies</p>
 
   <div id="upload-section">
     <div class="card">
       <div class="grid2">
         <div class="dropzone" id="dz-deel">
-          <div class="dz-label">DEEL Client-Class-Payroll <span class="tag-req">Required</span></div>
+          <div class="dz-label">Zurich Client-Class-Payroll <span class="tag-req">Required</span></div>
           <div class="dz-desc">Monthly report from ArtexRisk SharePoint</div>
           <div id="dz-deel-status"><label class="btn-choose">Choose File<input type="file" accept=".xlsx,.xls,.csv" style="display:none" onchange="handleFile('deel',this)"/></label></div>
         </div>
@@ -77,11 +88,12 @@
           <div id="dz-prism-status"><label class="btn-choose">Choose File<input type="file" accept=".xlsx,.xls,.csv" style="display:none" onchange="handleFile('prism',this)"/></label></div>
         </div>
       </div>
+      <div class="info-box">
+        <div><span>Missing States:</span> In Prism but not in Zurich → needs to be bound by Artex</div>
+        <div style="margin-top:4px"><span>Terminated:</span> In Zurich but not in Prism → active on Artex but missing from Deel census</div>
+      </div>
       <div id="error-box" style="display:none" class="error"></div>
       <button class="btn-run disabled" id="run-btn" onclick="runAnalysis()">Run QA Analysis →</button>
-    </div>
-    <div class="info-box">
-      <strong>How it works:</strong> The tool compares the DEEL report against the WC Active Audit Prism report. Any Client ID + State combination found in Prism but missing from the DEEL report will be flagged and formatted for Artex to bind.
     </div>
   </div>
 
@@ -90,13 +102,12 @@
 
 <script>
 const files = { deel: null, prism: null };
-let allResults = [];
+let missingResults = [], terminatedResults = [], currentSearch = "", currentTab = "missing";
 
 function handleFile(key, input) {
   const f = input.files[0]; if (!f) return;
   files[key] = f;
-  const s = document.getElementById("dz-" + key + "-status");
-  s.innerHTML = '<span class="file-chosen">✓ ' + f.name + '</span><button class="btn-remove" onclick="removeFile(\'' + key + '\')">Remove</button>';
+  document.getElementById("dz-" + key + "-status").innerHTML = '<span class="file-chosen">✓ ' + f.name + '</span><button class="btn-remove" onclick="removeFile(\'' + key + '\')">Remove</button>';
   document.getElementById("dz-" + key).classList.add("active");
   updateRunBtn();
 }
@@ -110,8 +121,7 @@ function removeFile(key) {
 
 function updateRunBtn() {
   const ready = files.deel && files.prism;
-  const btn = document.getElementById("run-btn");
-  btn.className = "btn-run " + (ready ? "ready" : "disabled");
+  document.getElementById("run-btn").className = "btn-run " + (ready ? "ready" : "disabled");
 }
 
 function padId(id) { return String(id).trim().replace(/\.0+$/, "").padStart(6, "0"); }
@@ -143,15 +153,14 @@ function formatDate(d) {
 function readFile(file) {
   return new Promise((res, rej) => {
     const r = new FileReader();
-    r.onload = e => { try { res(XLSX.read(e.target.result, { type: "array", cellDates: true })); } catch (err) { rej(err); } };
+    r.onload = e => { try { res(XLSX.read(e.target.result, { type: "array" })); } catch (err) { rej(err); } };
     r.onerror = rej;
     r.readAsArrayBuffer(file);
   });
 }
 
 function sheetToJson(wb) {
-  const sheet = wb.Sheets[wb.SheetNames[0]];
-  return XLSX.utils.sheet_to_json(sheet, { defval: "" });
+  return XLSX.utils.sheet_to_json(wb.Sheets[wb.SheetNames[0]], { defval: "" });
 }
 
 async function runAnalysis() {
@@ -166,17 +175,33 @@ async function runAnalysis() {
     const deelData = sheetToJson(deelWb);
     const prismData = sheetToJson(prismWb);
 
+    // Debug samples
+    const deelSample = deelData.slice(0, 3).map(row => {
+      const vals = Object.values(row);
+      return { colD: String(vals[3]||""), colF: String(vals[5]||""), colK: String(vals[10]||"") };
+    });
+    const prismSample = prismData.slice(0, 3).map(row => {
+      const vals = Object.values(row);
+      return { colA: String(vals[0]||""), colB: String(vals[1]||""), colC: String(vals[2]||""), colD: String(vals[3]||"") };
+    });
+
+    // Build Zurich concat set
     const deelConcats = new Set();
+    const deelMap = {};
     deelData.forEach(row => {
       const vals = Object.values(row);
       const rawId = String(vals[3] || "").trim();
       const clientId = padId(extractClientId(rawId));
       if (clientId.toLowerCase() === "deel" || rawId.toLowerCase().includes("deel")) return;
       const state = String(vals[10] || "").trim().toUpperCase();
+      const clientName = String(vals[5] || "").trim();
       if (!clientId || !state) return;
-      deelConcats.add(clientId + "." + state);
+      const concat = clientId + "." + state;
+      deelConcats.add(concat);
+      if (!deelMap[concat]) deelMap[concat] = { clientId, state, rawId, clientName };
     });
 
+    // Build Prism map
     const prismMap = {};
     prismData.forEach(row => {
       const vals = Object.values(row);
@@ -185,25 +210,34 @@ async function runAnalysis() {
       if (!clientId || clientId === "000000") return;
       const clientName = String(vals[1] || "").trim();
       const state = String(vals[2] || "").trim().toUpperCase();
+      if (!state) return;
       const wcCode = extractWCCode(vals[3]);
       const payRate = parseFloat(String(vals[7] || "0").replace(/[^0-9.]/g, "")) || 0;
       const concat = clientId + "." + state;
-      if (!prismMap[concat]) prismMap[concat] = { clientId, clientName, state, wcCode, payRate: 0 };
+      if (!prismMap[concat]) prismMap[concat] = { clientId, clientName, state, wcCode, payRate: 0, concat };
       prismMap[concat].payRate += payRate;
     });
 
     const today = formatDate(new Date());
-    allResults = [];
+
+    // Missing: in Prism but NOT in Zurich
+    missingResults = [];
     Object.entries(prismMap).forEach(([concat, data]) => {
       if (!deelConcats.has(concat)) {
-        allResults.push({
-          type: "Use Position", clientId: data.clientId, clientName: data.clientName,
-          effectiveDate: today, classCode: data.wcCode, state: data.state, payroll: data.payRate
-        });
+        missingResults.push({ type: "Use Position", clientId: data.clientId, clientName: data.clientName, effectiveDate: today, classCode: data.wcCode, state: data.state, payroll: data.payRate, concat });
       }
     });
 
-    renderResults(deelConcats.size, Object.keys(prismMap).length);
+    // Terminated: in Zurich but NOT in Prism
+    terminatedResults = [];
+    deelConcats.forEach(concat => {
+      if (!prismMap[concat]) {
+        const d = deelMap[concat];
+        terminatedResults.push({ clientId: d.clientId, clientName: d.clientName, state: d.state, rawId: d.rawId, concat });
+      }
+    });
+
+    renderResults(deelConcats.size, Object.keys(prismMap).length, deelSample, prismSample);
   } catch (err) {
     const eb = document.getElementById("error-box");
     eb.textContent = "Processing failed: " + err.message;
@@ -213,97 +247,129 @@ async function runAnalysis() {
   }
 }
 
-function renderResults(totalDeel, totalPrism) {
+function renderResults(totalDeel, totalPrism, deelSample, prismSample) {
   document.getElementById("upload-section").style.display = "none";
   document.getElementById("results-section").style.display = "block";
+
+  const debugHTML = '<div class="debug-box">' +
+    '<p>🔍 Debug — ' + totalDeel + ' Zurich rows, ' + totalPrism + ' Prism rows</p>' +
+    '<p style="color:#92400e;font-weight:600;margin-bottom:4px">Zurich (Col D = Group ID, Col F = Client Name, Col K = State):</p>' +
+    deelSample.map(r => '<div class="debug-row">ColD: "' + r.colD + '" | ColF: "' + r.colF + '" | ColK: "' + r.colK + '"</div>').join("") +
+    '<p style="color:#92400e;font-weight:600;margin-top:8px;margin-bottom:4px">Prism (Col A = Client ID, Col B = Name, Col C = State, Col D = WC Code):</p>' +
+    prismSample.map(r => '<div class="debug-row">ColA: "' + r.colA + '" | ColB: "' + r.colB + '" | ColC: "' + r.colC + '" | ColD: "' + r.colD + '"</div>').join("") +
+    '</div>';
+
   document.getElementById("results-section").innerHTML = `
-    <div class="grid3">
+    <div class="grid4">
       <div class="summary-card bg-dark"><div class="val">${totalPrism}</div><div class="lbl">Prism Records</div></div>
-      <div class="summary-card bg-blue"><div class="val">${totalDeel}</div><div class="lbl">DEEL Records</div></div>
-      <div class="summary-card bg-red"><div class="val">${allResults.length}</div><div class="lbl">Missing States</div></div>
+      <div class="summary-card bg-blue"><div class="val">${totalDeel}</div><div class="lbl">Zurich Records</div></div>
+      <div class="summary-card bg-orange"><div class="val">${missingResults.length}</div><div class="lbl">Missing States</div></div>
+      <div class="summary-card bg-red"><div class="val">${terminatedResults.length}</div><div class="lbl">Terminated</div></div>
     </div>
-    <div class="card">
-      <div class="toolbar">
-        <div class="toolbar-left">
-          <h2>Missing States — Send to Artex</h2>
-          <p>These are in Prism but not in the DEEL report</p>
+    ${debugHTML}
+    <div class="tabs">
+      <button class="tab active" id="tab-missing" onclick="switchTab('missing')">Missing States <span class="tab-badge tab-badge-gray">${missingResults.length}</span></button>
+      <button class="tab" id="tab-terminated" onclick="switchTab('terminated')">Terminated <span class="tab-badge tab-badge-red">${terminatedResults.length}</span></button>
+      <button class="btn-new" onclick="resetTool()">New Analysis</button>
+    </div>
+    <div id="tab-content-missing">
+      <div class="card">
+        <div class="toolbar">
+          <div class="toolbar-left"><h2>Missing States — Send to Artex</h2><p>In Prism but not in the Zurich report</p></div>
+          <div class="toolbar-right">
+            <input class="search-input" placeholder="Search client / state..." oninput="applySearch(this.value)" />
+            <button class="btn-export" onclick="exportMissing()">Export Excel</button>
+          </div>
         </div>
-        <div class="toolbar-right">
-          <input class="search-input" placeholder="Search client / state..." oninput="applySearch(this.value)" />
-          <button class="btn-export" onclick="exportCSV()">Export CSV for Artex</button>
-          <button class="btn-new" onclick="resetTool()">New Analysis</button>
-        </div>
+        <div class="overflow-x"><table>
+          <thead><tr><th>Type</th><th>Client ID</th><th>Client Name</th><th>Effective Date</th><th>Class Code</th><th>State</th><th>Payroll</th></tr></thead>
+          <tbody id="missing-tbody"></tbody>
+        </table></div>
       </div>
-      <div class="overflow-x">
-        <table>
-          <thead><tr>
-            <th>Type</th><th>Client ID</th><th>Client Name</th>
-            <th>Effective Date</th><th>Class Code</th><th>State</th><th>Payroll</th>
-          </tr></thead>
-          <tbody id="results-tbody"></tbody>
-        </table>
+    </div>
+    <div id="tab-content-terminated" style="display:none">
+      <div class="card">
+        <div class="toolbar">
+          <div class="toolbar-left"><h2>Terminated — Active on Artex but Missing from Deel Census</h2><p>In Zurich report but not in Prism</p></div>
+          <div class="toolbar-right">
+            <input class="search-input" placeholder="Search client / state..." oninput="applySearch(this.value)" />
+            <button class="btn-export" onclick="exportTerminated()">Export Excel</button>
+          </div>
+        </div>
+        <div class="overflow-x"><table>
+          <thead><tr><th>Group ID</th><th>Client ID</th><th>Client Name</th><th>State</th><th>Concatenate</th></tr></thead>
+          <tbody id="terminated-tbody"></tbody>
+        </table></div>
       </div>
     </div>`;
-  renderTable(allResults);
+
+  renderMissingTable(missingResults);
+  renderTerminatedTable(terminatedResults);
+}
+
+function switchTab(tab) {
+  currentTab = tab;
+  document.getElementById("tab-content-missing").style.display = tab === "missing" ? "block" : "none";
+  document.getElementById("tab-content-terminated").style.display = tab === "terminated" ? "block" : "none";
+  document.getElementById("tab-missing").className = "tab" + (tab === "missing" ? " active" : "");
+  document.getElementById("tab-terminated").className = "tab" + (tab === "terminated" ? " active" : "");
 }
 
 function applySearch(val) {
-  const s = val.toLowerCase();
-  const filtered = allResults.filter(r =>
-    !s || r.clientName.toLowerCase().includes(s) || r.clientId.includes(s) || r.state.includes(s.toUpperCase())
-  );
-  renderTable(filtered);
+  currentSearch = val.toLowerCase();
+  if (currentTab === "missing") {
+    renderMissingTable(missingResults.filter(r => !currentSearch || r.clientName.toLowerCase().includes(currentSearch) || r.clientId.includes(currentSearch) || r.state.includes(currentSearch.toUpperCase())));
+  } else {
+    renderTerminatedTable(terminatedResults.filter(r => !currentSearch || r.clientName.toLowerCase().includes(currentSearch) || r.clientId.includes(currentSearch) || r.state.includes(currentSearch.toUpperCase())));
+  }
 }
 
-function renderTable(rows) {
-  const tbody = document.getElementById("results-tbody");
+function renderMissingTable(rows) {
+  const tbody = document.getElementById("missing-tbody");
   if (!tbody) return;
-  if (!rows.length) {
-    tbody.innerHTML = '<tr><td colspan="7" class="empty">' +
-      (allResults.length === 0 ? "🎉 No missing states found!" : "No records match your search") +
-      '</td></tr>';
-    return;
-  }
-  tbody.innerHTML = rows.map(r => `<tr>
-    <td style="font-size:11px;color:#6b7280">${r.type}</td>
-    <td class="mono">${r.clientId}</td>
-    <td class="truncate">${r.clientName || "—"}</td>
-    <td style="font-size:11px;color:#6b7280">${r.effectiveDate}</td>
-    <td><span class="badge-blue">${r.classCode}</span></td>
-    <td><span class="badge-gray">${r.state}</span></td>
-    <td style="font-size:12px;font-weight:500;color:#374151">${formatCurrency(r.payroll)}</td>
-  </tr>`).join("");
+  if (!rows.length) { tbody.innerHTML = '<tr><td colspan="7" class="empty">' + (missingResults.length === 0 ? "No missing states found!" : "No records match your search") + '</td></tr>'; return; }
+  tbody.innerHTML = rows.map(r => '<tr>' +
+    '<td style="font-size:11px;color:#6b7280">' + r.type + '</td>' +
+    '<td class="mono">' + r.clientId + '</td>' +
+    '<td class="truncate">' + (r.clientName || "—") + '</td>' +
+    '<td style="font-size:11px;color:#6b7280">' + r.effectiveDate + '</td>' +
+    '<td><span class="badge-blue">' + r.classCode + '</span></td>' +
+    '<td><span class="badge-gray">' + r.state + '</span></td>' +
+    '<td style="font-size:12px;font-weight:500">' + formatCurrency(r.payroll) + '</td>' +
+    '</tr>').join("");
 }
 
-function exportCSV() {
-  const rows = allResults.map(r => ({
-    "Type": r.type,
-    "Client ID": { t: "s", v: r.clientId },
-    "Client Name": r.clientName,
-    "Effective Date": r.effectiveDate,
-    "Class Code": r.classCode,
-    "State": r.state,
-    "Payroll": r.payroll.toFixed(2)
-  }));
+function renderTerminatedTable(rows) {
+  const tbody = document.getElementById("terminated-tbody");
+  if (!tbody) return;
+  if (!rows.length) { tbody.innerHTML = '<tr><td colspan="5" class="empty">' + (terminatedResults.length === 0 ? "No terminated records found!" : "No records match your search") + '</td></tr>'; return; }
+  tbody.innerHTML = rows.map(r => '<tr>' +
+    '<td style="font-size:11px">' + r.rawId + '</td>' +
+    '<td class="mono">' + r.clientId + '</td>' +
+    '<td class="truncate">' + (r.clientName || "—") + '</td>' +
+    '<td><span class="badge-red">' + r.state + '</span></td>' +
+    '<td class="mono" style="font-size:11px;color:#9ca3af">' + r.concat + '</td>' +
+    '</tr>').join("");
+}
+
+function exportMissing() {
+  const rows = missingResults.map(r => ({ "Type": r.type, "Client ID": r.clientId, "Client Name": r.clientName, "Effective Date": r.effectiveDate, "Class Code": r.classCode, "State": r.state, "Payroll": r.payroll.toFixed(2) }));
   const ws = XLSX.utils.json_to_sheet(rows);
-  // Force Client ID column (B) as text
-  const range = XLSX.utils.decode_range(ws["!ref"]);
-  for (let i = range.s.r + 1; i <= range.e.r; i++) {
-    const cell = ws[XLSX.utils.encode_cell({ r: i, c: 1 })];
-    if (cell) { cell.t = "s"; cell.z = "@"; }
-  }
-  const csv = XLSX.utils.sheet_to_csv(ws);
-  const blob = new Blob([csv], { type: "text/csv" });
-  const url = URL.createObjectURL(blob);
-  const a = document.createElement("a");
-  a.href = url;
-  a.download = "Zurich_Active_QA_" + formatDate(new Date()).replace(/\//g, "-") + ".csv";
-  a.click();
-  URL.revokeObjectURL(url);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Missing States");
+  XLSX.writeFile(wb, "Missing_States_" + formatDate(new Date()).replace(/\//g, "-") + ".xlsx");
+}
+
+function exportTerminated() {
+  const rows = terminatedResults.map(r => ({ "Client ID": r.clientId, "Client Name": r.clientName, "State": r.state, "Group ID": r.rawId, "Concatenate": r.concat }));
+  const ws = XLSX.utils.json_to_sheet(rows);
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, ws, "Terminated");
+  XLSX.writeFile(wb, "Terminated_" + formatDate(new Date()).replace(/\//g, "-") + ".xlsx");
 }
 
 function resetTool() {
-  allResults = [];
+  missingResults = []; terminatedResults = []; currentSearch = ""; currentTab = "missing";
   Object.keys(files).forEach(k => files[k] = null);
   ["deel", "prism"].forEach(k => {
     const s = document.getElementById("dz-" + k + "-status");
